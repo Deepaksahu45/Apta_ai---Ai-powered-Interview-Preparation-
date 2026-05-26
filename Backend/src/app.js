@@ -9,7 +9,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.CLIENT_URL, // Adjust this to your frontend URL
-    credentials: true, // Allow cookies to be sent with requests
+    // credentials: true, // Allow cookies to be sent with requests
   })
 );
 
