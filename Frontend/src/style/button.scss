@@ -1,0 +1,85 @@
+/* ─────────────────────────────────────────────
+   AptaAI – Button System
+   ───────────────────────────────────────────── */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  outline: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  &:active::after {
+    opacity: 1;
+  }
+
+  &.primary-button {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 2px 16px var(--glow-pink), 0 1px 3px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(255, 46, 154, 0.3), 0 2px 8px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &.secondary-button {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-default);
+
+    &:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  &.ghost-button {
+    background: transparent;
+    color: var(--text-muted);
+
+    &:hover {
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--text-primary);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    filter: none !important;
+  }
+}

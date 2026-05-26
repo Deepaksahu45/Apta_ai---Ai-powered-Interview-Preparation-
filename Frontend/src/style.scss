@@ -1,0 +1,179 @@
+@use './style/button.scss';
+
+/* ─────────────────────────────────────────────
+   AptaAI – Global Design System
+   Premium Dark AI SaaS Theme
+   ───────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg-deepest: #050816;
+  --bg-deep: #0B1120;
+  --bg-primary: #111827;
+  --bg-card: #151C2C;
+  --bg-card-hover: #1A2236;
+  --bg-input: #0F172A;
+  --bg-glass: rgba(15, 23, 42, 0.6);
+
+  /* Borders */
+  --border-subtle: rgba(148, 163, 184, 0.08);
+  --border-default: rgba(148, 163, 184, 0.12);
+  --border-hover: rgba(148, 163, 184, 0.2);
+  --border-glow: rgba(147, 51, 234, 0.3);
+
+  /* Accent Colors */
+  --accent-pink: #FF2E9A;
+  --accent-purple: #9333EA;
+  --accent-violet: #8B5CF6;
+  --accent-green: #22C55E;
+  --accent-amber: #F59E0B;
+  --accent-red: #EF4444;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #FF2E9A, #9333EA);
+  --gradient-purple: linear-gradient(135deg, #9333EA, #8B5CF6);
+  --gradient-subtle: linear-gradient(135deg, rgba(255, 46, 154, 0.1), rgba(147, 51, 234, 0.1));
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* Glows */
+  --glow-pink: rgba(255, 46, 154, 0.15);
+  --glow-purple: rgba(147, 51, 234, 0.15);
+  --glow-violet: rgba(139, 92, 246, 0.15);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(147, 51, 234, 0.15);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
+
+  /* Font */
+  --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-deepest);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: var(--radius-full);
+
+  &:hover {
+    background: rgba(148, 163, 184, 0.25);
+  }
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(147, 51, 234, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Focus Ring ── */
+:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Links ── */
+a {
+  color: var(--accent-violet);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--accent-pink);
+  }
+}
+
+/* ── Utility ── */
+.highlight {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Skeleton loading ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    var(--bg-card-hover) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ── Page fade in ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: fadeIn 0.4s ease-out forwards;
+}
