@@ -1,6 +1,7 @@
 const { GoogleGenAI } = require('@google/genai');
 const { default: zodToJsonSchema } = require('zod-to-json-schema');
 const puppeteer = require('puppeteer');
+const chromium = require('@sparticuz/chromium');
 const { z } = require('zod');
 
 const ai = new GoogleGenAI({
@@ -175,8 +176,10 @@ Generate:
 
 const generatePdfFromHtml = async (htmlContent) => {
   const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
   });
 
   const page = await browser.newPage();
