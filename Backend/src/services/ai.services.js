@@ -174,9 +174,17 @@ Generate:
 };
 
 const generatePdfFromHtml = async (htmlContent) => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+
   const page = await browser.newPage();
-  await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+
+  await page.setContent(htmlContent, {
+    waitUntil: 'networkidle0',
+  });
+
   const pdfBuffer = await page.pdf({
     format: 'A4',
     margin: {
@@ -186,7 +194,9 @@ const generatePdfFromHtml = async (htmlContent) => {
       right: '15mm',
     },
   });
+
   await browser.close();
+
   return pdfBuffer;
 };
 
