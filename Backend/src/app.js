@@ -12,8 +12,7 @@ app.use(
       'http://localhost:5173',
       'https://apta-ai-ai-powered-interview-prepar.vercel.app',
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
 
