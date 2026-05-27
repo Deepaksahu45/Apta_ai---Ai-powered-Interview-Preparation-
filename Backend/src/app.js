@@ -8,7 +8,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "*"
+    origin: [
+      'http://localhost:5173',
+      'https://apta-ai-ai-powered-interview-prepar.vercel.app',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
